@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: 15px;
+}
+
+.description {
+  text-align: left;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.adInfo {
+  text-align: left;
+}

@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react';
 import { requestMovie } from '../components/services/services';
 import MovieList from '../components/MovieList';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import Loader from '../components/Loader/Loader';
+import { ErrorMessage } from 'formik';
 
 
 function MoviesPage() {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
    
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,11 +27,15 @@ function MoviesPage() {
     if (!paramQuery) return;
 
     async function fetchMovie() {
+      setIsLoading(true);
       try {
         const data = await requestMovie(paramQuery);
         if (data.results.length > 0) setMovies(data.results);
       } catch (error) {
-        console.log(error);
+        toast.error("This didn't work.");
+        setError(true);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchMovie();
@@ -33,6 +43,8 @@ function MoviesPage() {
 
   return (
     <div>
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
