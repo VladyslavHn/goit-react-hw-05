@@ -1,22 +1,18 @@
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from "react-router-dom"
 
 
-function MovieList({ movies }) {
-  const location = useLocation();
-
+const MovieList = ({trends}) => {
   return (
-    <div >
-      <ul>
-        {movies.map(movie => (
+    <ul>
+        {trends.map(movie => (
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={location}>
-              {movie.title}
-            </Link>
+            {movie.id && (
+              <NavLink to={`/movies/${movie.id}`}>{movie.original_title}</NavLink>
+            )}
           </li>
         ))}
       </ul>
-    </div>
-  );
+  )
 }
 
-export default MovieList;
+export default MovieList

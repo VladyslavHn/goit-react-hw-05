@@ -4,7 +4,7 @@ import { requestTrendingMovies } from "../components/services/services";
 import Loader from '../components/Loader/Loader'
 import toast from "react-hot-toast";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import { NavLink } from "react-router-dom";
+import MovieList from "../components/MovieList";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,15 +32,7 @@ function HomePage() {
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
       <h1>Trending today</h1>
-      <ul>
-        {trends.map(movie => (
-          <li key={movie.id}>
-            {movie.id && (
-              <NavLink to={`/movies/${movie.id}`}>{movie.original_title}</NavLink>
-            )}
-          </li>
-        ))}
-      </ul>
+      <MovieList trends={trends}/>
     </div>
   );
 }
