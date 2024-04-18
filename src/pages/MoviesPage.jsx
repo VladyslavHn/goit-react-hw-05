@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { requestMovie } from '../components/services/services';
 import MovieSearchList from '../components/MovieSearchList';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
 import { ErrorMessage } from 'formik';
@@ -12,7 +12,6 @@ function MoviesPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
    
-  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const paramQuery = searchParams.get('value');
 
@@ -55,7 +54,7 @@ function MoviesPage() {
         />
         <button type="submit">Search</button>
       </form>
-      <MovieSearchList movies={movies} from={location} defLocation="/movies" />
+      <MovieSearchList movies={movies} defLocation="/movies" />
     </div>
   );
 }
