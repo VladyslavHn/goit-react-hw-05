@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { requestMovie } from '../components/services/services';
-import MovieSearchList from '../components/MovieSearchList';
+import MovieSearchList from '../components/MovieSearchList/MovieSearchList';
 import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
-import { ErrorMessage } from 'formik';
+import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
 
 function MoviesPage() {

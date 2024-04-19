@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestMovieReviews } from './services/services';
+import { requestMovieReviews } from '../services/services';
 import { useParams } from 'react-router-dom';
 
 function MovieReviews() {

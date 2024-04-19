@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { requestMovieCast } from './services/services';
+import { requestMovieCast } from '../services/services';
 import { useParams } from 'react-router-dom';
 
 function MovieCast() {

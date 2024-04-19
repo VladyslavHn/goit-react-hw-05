@@ -4,7 +4,7 @@ import { requestTrendingMovies } from "../components/services/services";
 import Loader from '../components/Loader/Loader'
 import toast from "react-hot-toast";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-import MovieList from "../components/MovieList";
+import MovieList from "../components/MovieList/MovieList";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
